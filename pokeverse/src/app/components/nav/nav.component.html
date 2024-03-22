@@ -3,6 +3,9 @@
     <div>
         <button mat-button [ngStyle]="{'color': 'white'}">
             <span>All Pokemon</span>     
-        </button>       
+        </button>  
+        <button *ngIf="battleReady" mat-button [ngStyle]="{'color': 'white', 'background-color' : 'darkred'}">
+            <span>Battle</span>
+        </button>     
     </div> 
 </mat-toolbar>

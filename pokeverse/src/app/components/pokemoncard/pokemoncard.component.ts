@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, INJECTOR, Input, Output } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-pokemoncard',
@@ -8,7 +9,13 @@ import { PokemonService } from '../../services/pokemon.service';
 })
 export class PokemoncardComponent {
   @Input() pokemon: any;
+  @Input() btnStyle!: string;
+  @Input() btnTitle !: string;
+  @Output() btnClick = new EventEmitter();
   pokemonInfo:any;
+  mySquad: any;
+  btnDisabled !: string;
+  
 
   constructor(private pokemonService: PokemonService){}
 
@@ -16,5 +23,13 @@ export class PokemoncardComponent {
     this.pokemonService.getOnePokemon(this.pokemon.url).subscribe((data:any) => {
       this.pokemonInfo = data;
     })
+    this.pokemonService.mySquad.subscribe(val => {
+      this.mySquad = val
+    })
   }
+
+  onClick(pokemon:any){
+    this.btnClick.emit(pokemon);
+  }
+
 }

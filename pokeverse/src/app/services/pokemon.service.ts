@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import {Observable} from 'rxjs'
+import {Observable, of} from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,8 @@ import {Observable} from 'rxjs'
 export class PokemonService {
 
   apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=151'
+
+  mySquad: Observable<any> = of([]);
 
   constructor(private http: HttpClient) { }
 

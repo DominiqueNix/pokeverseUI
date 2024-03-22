@@ -9,9 +9,17 @@
 
 
 <app-nav></app-nav>
-<div class="container">
-  <app-pokemoncard *ngFor="let p of allPokemon" [pokemon]="p"></app-pokemoncard>  
-</div>
+<main>
+    <h2>My Squad </h2>
+    <div class="container">  
+      <app-pokemoncard *ngFor="let p of mySquad" [pokemon]="p" btnStyle="red" btnTitle="REMOVE" (btnClick)="removePokemon(p)"></app-pokemoncard>  
+    </div>
+    <h2>All Pokemon</h2>
+    <div class="container">  
+      <app-pokemoncard *ngFor="let p of allPokemon" [pokemon]="p" btnStyle="green" btnTitle="ADD" (btnClick)="addPokemon(p)"></app-pokemoncard>  
+    </div>   
+</main>
+
 
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

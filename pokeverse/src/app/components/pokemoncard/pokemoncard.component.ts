@@ -14,7 +14,7 @@ export class PokemoncardComponent {
   @Output() btnClick = new EventEmitter();
   pokemonInfo:any;
   mySquad: any;
-  btnDisabled !: string;
+  btnDisabled: boolean= false;
   
 
   constructor(private pokemonService: PokemonService){}

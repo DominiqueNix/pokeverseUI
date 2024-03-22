@@ -9,9 +9,7 @@ import { of } from 'rxjs';
 })
 export class AppComponent {
   title: string = 'pokeverseUI';
-
   allPokemon!: any;
-
   mySquad: any;
 
   constructor(private pokemonService: PokemonService){}
@@ -26,8 +24,30 @@ export class AppComponent {
   }
 
   addPokemon(p: any){
-    this.mySquad.push(p)
-    this.pokemonService.mySquad = of(this.mySquad)
+    if(this.mySquad.length < 6){ 
+
+      if(this.mySquad.length){
+        let pokemonToAdd;
+         for(let i = 0; i < this.mySquad.length; i++){
+            if(this.mySquad[i].name === p.name){
+              pokemonToAdd.name = false
+              
+            } else {
+              pokemonToAdd = p
+            }
+          }
+          if(pokemonToAdd.name !== false){
+            this.mySquad.push(pokemonToAdd)
+          } else {
+            alert("Pokemon already in squad")
+          }
+      } else {
+        this.mySquad.push(p)
+      } 
+      
+    }else{
+      alert("Can't add more Pokemon")
+    }
   }
 
   removePokemon(p: any){

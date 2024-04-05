@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
 
 import { NavComponent } from './nav.component';
 
@@ -8,6 +9,7 @@ describe('NavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [MatToolbarModule, MatToolbar],
       declarations: [NavComponent]
     })
     .compileComponents();
@@ -17,7 +19,8 @@ describe('NavComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should render navbar', () => {
     expect(component).toBeTruthy();
   });
+
 });
